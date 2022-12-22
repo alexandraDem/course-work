@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/start-page.css">
+</head>
+<body>
+    <div class="container">
+        <div class="name-container">
+            Перетяни-ка
+        </div>
+        <div class="leaderboard-btn">
+            Рейтинг
+        </div>
+        <div class="level-container">
+            <button onclick="level()">Easy</button><br />
+            <button onclick="level()">Medium</button><br />
+            <button onclick="level()">Hard</button><br />
+        </div>
+        
+        <div class="login-container">
+            <h2>Введите имя</h2>
+            <form onsubmit="login()">
+                <input name="guruweba_example_button" type="text" value="Guest" />
+            </form>
+        </div>
+
+
+
+        <div class="modal-link">
+            <span class="modal-button" style="width:40px;height:40px" >?</span>
+            <input type="checkbox" class="modal-launcher">
+            <div class="modal-window">
+                <h2>Как играть</h2>
+                <p>Цель игры: собрать как можно больше очков за отведенное время</p>
+                <ul>
+                    <li>Перетаскивай картинки в нужное место</li>
+                    <li>Набирай очки</li>
+                    <li>Не забудь записать свое имя на доску лидеров</li>   
+                </ul>
+            </div>
+            <div class="modal-overlay"></div>
+        </div>
+    </div>
+ 
+<script src="../js/start-page.js"></script>
+</body>
+</html>
