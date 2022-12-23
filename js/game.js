@@ -37,6 +37,8 @@ function delegate(parent, type, selector, fn) {
   parent.addEventListener(type, delegatedFunction, false);
 }
 
+
+// .delegate( selector, eventType, eventData, handler(eventObject)
 delegate(container, 'pointerdown', '.draggable', onPointerDown);
 delegate(container, 'pointermove', '.draggable', onPointerMove);
 delegate(container, 'pointerup', '.draggable', onPointerUp);
@@ -50,11 +52,13 @@ delegate(header, 'pointerup', '.exit', initStartPage);
 
 window.onload = init();
 
+
 function init() {
   randomIds = setCardIdRandomly();
   points = 0;
   let wW = window.screen.availWidth;
   let wH = window.screen.availHeight;
+
 
   window.onresize = function (event) {
     if (window.screen.availWidth != wW || window.screen.availHeight != wH) {
@@ -65,6 +69,57 @@ function init() {
       wH = window.screen.availHeight;
     }
   };
+}
+
+let timerElement = document.getElementById("timer");
+var setTimeoutVar; 
+var resultTime;
+
+function ShowTimer(){
+  timerElement.style.visibility = "visible";
+ 
+  var status = 0; //0:stop 1:running
+  var time = 0;
+  
+  document.getElementById('timer').innerHTML = "00:00:00";
+  start();
+                   
+      function start(){
+          status = 1;
+          timer();
+      }
+
+      function timer(){
+          if(status == 1){
+              setTimeoutVar = setTimeout(function(){
+                  time++;
+                  var min = Math.floor(time/100/60);
+                  var sec = Math.floor(time/100);
+                  var mSec = time % 100;
+                   
+                  if(min < 10) {
+                      min = "0" + min;
+                  }
+                  if(sec >= 60) {
+                      sec = sec % 60;
+                  }
+                  if(sec < 10) {
+                      sec = "0" + sec;
+                  }
+                   resultTime = min + ":" + sec + ":" + mSec;
+                  document.getElementById('timer').innerHTML = resultTime;
+                  timer();
+              }, 10);
+          }
+      }
+}
+
+function HideTimer(){
+  document.getElementById('timer').innerHTML = "00:00:00";
+  timerElement.style.visibility = "hidden";
+  console.log("timer hidden ");
+  console.log(resultTime);
+  clearTimeout(setTimeoutVar);
 }
 
 function placeAllDraggableElementRandomly() {
@@ -260,6 +315,9 @@ function onPointerUp(e) {
   e.target.classList.remove('active');
 
   if (points == 9) {
+    HideTimer();
+    SaveResult();
+  
     $('.shadow').style.visibility = "visible";
     winnerAnimation();
     points = 0;
@@ -271,6 +329,17 @@ function onPointerUp(e) {
     }
   }
   
+}
+
+function SaveResult(){
+  // let result = {
+  //   UserName: document.getElementById("Username").value, 
+  //   ResultTime: resultTime,
+  //   Level: level,
+  // };
+  // localStorage.setItem('result', JSON.stringify(result));
+
+  localStorage.setItem(document.getElementById("Username").value, resultTime);
 }
 
 function onPointerUpOnStartPage(e) {
@@ -292,6 +361,8 @@ function onPointerUpOnDifficultSelector(e) {
       counter = 0;
     }
   }
+  ShowTimer();
+  
 }
 
 function onPointerUpOnNextLevel(e) {
@@ -310,7 +381,9 @@ function onPointerUpOnNextLevel(e) {
 }
 
 
+
 function initStage(id) {
+  //TO DO
   $('#easy').style.background = "url(../media/easy.png) no-repeat center";
   $('#easy').style.backgroundSize = "100%";
   $('#hard').style.background = "url(../media/hard.png) no-repeat center";
@@ -338,10 +411,16 @@ function initStage(id) {
     $('footer').appendChild(elem);
     placeDraggableElementRandomly(elem);
   });
+
+  
 }
 
 function initStartPage() {
+  
   clearTimeout(endGameTimer);
+
+  HideTimer();
+ 
   $('.shadow').style.visibility = "";
   $('#easy').style.visibility = "";
   $('#hard').style.visibility = "";

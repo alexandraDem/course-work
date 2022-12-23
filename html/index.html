@@ -1,51 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../styles/start-page.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Game</title>
+  <link rel="stylesheet" href="../styles/game.css">
+  <link rel="stylesheet" href="../styles/startpage.css">
 </head>
 <body>
-    <div class="container">
-        <div class="name-container">
-            Перетяни-ка
-        </div>
-        <div class="leaderboard-btn">
-            Рейтинг
-        </div>
-        <div class="level-container">
-            <button onclick="level()">Easy</button><br />
-            <button onclick="level()">Medium</button><br />
-            <button onclick="level()">Hard</button><br />
-        </div>
-        
-        <div class="login-container">
-            <h2>Введите имя</h2>
-            <form onsubmit="login()">
-                <input name="guruweba_example_button" type="text" value="Guest" />
-            </form>
-        </div>
+  <header id='header'>
+    <div class="exit" id="exit"></div>
+    <div id="timer">00:00:00</div>
+  </header>
 
+  <main id="container">
+    <section id="table">
+      <table>
+        <tr>
+          <td>
+            <div class="dropzone" id='1'></div>
+          </td>
+          <td>
+            <div class="dropzone" id='2'></div>
+          </td>
+          <td>
+            <div class="dropzone" id='3'></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="dropzone" id='4'></div>
+          </td>
+          <td>
+            <div class="dropzone" id='5'></div>
+          </td>
+          <td>
+            <div class="dropzone" id='6'></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="dropzone" id='7'></div>
+          </td>
+          <td>
+            <div class="dropzone" id='8'></div>
+          </td>
+          <td>
+            <div class="dropzone" id='9'></div>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <footer class="dropzone">
+      <div class="draggable" id='1'></div>
+      <div class="draggable" id='2'></div>
+      <div class="draggable" id='3'></div>
+      <div class="draggable" id='4'></div>
+      <div class="draggable" id='5'></div>
+      <div class="draggable" id='6'></div>
+      <div class="draggable" id='7'></div>
+      <div class="draggable" id='8'></div>
+      <div class="draggable" id='9'></div>
+    </footer>
 
+    
 
-        <div class="modal-link">
-            <span class="modal-button" style="width:40px;height:40px" >?</span>
-            <input type="checkbox" class="modal-launcher">
-            <div class="modal-window">
-                <h2>Как играть</h2>
-                <p>Цель игры: собрать как можно больше очков за отведенное время</p>
-                <ul>
-                    <li>Перетаскивай картинки в нужное место</li>
-                    <li>Набирай очки</li>
-                    <li>Не забудь записать свое имя на доску лидеров</li>   
-                </ul>
+    <div class="shadow" id="shadow"></div>
+    <div class="difficult" id="easy"></div>
+    <div class="difficult" id="hard"></div>
+    <div class="win"></div>
+    <div class="next"></div>
+
+    <div class="startPage"> 
+        <div class="container">
+            <div class="name-container">
+                Перетяни-ка
             </div>
-            <div class="modal-overlay"></div>
+            <a href="../html/leaderboard.html">
+                <div class="leaderboard-btn" >
+                    Рейтинг
+                </div>
+            </a>
+
+
+            
+            <div class="login-container">
+                <h2>Введите имя</h2>
+                <form onsubmit="login()">
+                    <input id = "Username" name="guruweba_example_button" type="text" value="Guest" />
+                </form>
+            </div>
+    
+    
+    
+            <div class="modal-link">
+                <span class="modal-button"  >?</span>
+                <input type="checkbox" class="modal-launcher">
+                <div class="modal-window">
+                    <h2>Как играть</h2>
+                    <p>Цель игры: собрать как можно больше очков за отведенное время</p>
+                    <ul>
+                        <li>Перетаскивай картинки в нужное место</li>
+                        <li>Набирай очки</li>
+                        <li>Не забудь записать свое имя на доску лидеров</li>   
+                    </ul>
+                </div>
+                <div class="modal-overlay"></div>
+            </div>
         </div>
+        <div class="level" id="L1"></div>
+        <div class="level" id="L2"></div>
+        <div class="level" id="L3"></div>
     </div>
- 
-<script src="../js/start-page.js"></script>
+    
+
+  </main>
+  
+  <script src="../js/game.js"></script>
 </body>
 </html>

@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+a {
+    text-decoration:none;
+  }
+
 html,body {
     box-sizing: border-box;
+    font-family: Poppins;
+    
   }
   *, *:before, *:after { box-sizing: inherit; }
 
@@ -32,8 +40,12 @@ html,body {
   header {
     width: 100vw;
     height: calc(100vh/8);
-    background: orange;
+    background: rgb(0,191,255);
     overflow: hidden;
+  }
+  
+  h2{
+    margin: 0;
   }
 
   header .exit {
@@ -151,7 +163,7 @@ html,body {
     background-color: lightblue;
     display: inline-block;
     border-radius: 10px;
-    margin: 10% 0% 0% 0%;
+    margin: 1% 0% 0% 0%;
     border-style: outset;
     border-width: 10px;
   }
@@ -295,6 +307,7 @@ html,body {
     touch-action: none;
   }
 
+
   div.dropzone .draggable {
     width: 100%;
     height: 100%;
@@ -325,3 +338,9 @@ html,body {
     opacity: 0.8;
   }
   
+ /* Timer-start */
+ #timer{
+    visibility: hidden;
+    font-size: 2.8rem;
+}
+/* Timer-end */
